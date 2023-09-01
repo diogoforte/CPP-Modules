@@ -43,8 +43,11 @@ int main() {
       myPhoneBook.addContact(newContact);
     } else if (command == "SEARCH") {
       myPhoneBook.displayContacts();
-      std::cout << "Enter index to view details: ";
-      std::getline(std::cin, index);
+      while (!index.size())
+      {
+        std::cout << "Enter index to view details: ";
+        std::getline(std::cin, index);
+      }
       myPhoneBook.displaySpecificContact(index);
     } else if (command == "EXIT")
       break;
