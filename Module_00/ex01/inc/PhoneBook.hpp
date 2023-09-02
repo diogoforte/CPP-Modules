@@ -13,7 +13,8 @@ public:
   PhoneBook();
   void addContact(Contact &contact);
   void displayContacts();
-  void displaySpecificContact(const std::string& str_index);
+  void displaySpecificContact(const std::string &str_index);
+  static void runPhoneBook();
 };
 
 #endif
