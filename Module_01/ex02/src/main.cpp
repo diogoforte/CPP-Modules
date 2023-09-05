@@ -6,7 +6,7 @@ int main() {
   std::string &stringREF = string;
 
   std::cout << &string << std::endl;
-  std::cout << &stringPTR << std::endl;
+  std::cout << stringPTR << std::endl;
   std::cout << &stringREF << std::endl;
   std::cout << string << std::endl;
   std::cout << *stringPTR << std::endl;

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-std::string replace_all(const std::string &source, const std::string &from,
+std::string replace(const std::string &source, const std::string &from,
                         const std::string &to) {
   std::string newString;
   newString.reserve(source.length());
@@ -34,6 +34,6 @@ int main(int argc, char **argv) {
     std::cerr << "Failed to create output file." << std::endl;
     return 1;
   }
-  outputFile << replace_all(content, argv[2], argv[3]);
+  outputFile << replace(content, argv[2], argv[3]);
   return 0;
 }

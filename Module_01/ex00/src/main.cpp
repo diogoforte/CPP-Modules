@@ -2,8 +2,8 @@
 #include <iostream>
 
 int main() {
-  Zombie *heapZombie = newZombie("Cristiano");
+  Zombie *heapZombie = newZombie("Heap Zombie");
   heapZombie->announce();
   delete heapZombie;
-  randomChump("Ronaldo");
+  randomChump("Stack Zombie");
 }
