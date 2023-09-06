@@ -42,16 +42,21 @@ Harl::LogLevel Harl::getLogLevel(const std::string &level) {
   return UNKNOWN;
 }
 
-void Harl::complain(const LogLevel level) const {
-  if (level == ERROR)
-    error();
-  if (level == ERROR || level == WARNING)
-    warning();
-  if (level == ERROR || level == WARNING || level == INFO)
-    info();
-  if (level == ERROR || level == WARNING || level == INFO || level == DEBUG)
-    debug();
-  if (level == UNKNOWN)
-    std::cout << "[ Probably complaining about insignificant problems ]"
-              << std::endl;
+void Harl::complain(const char *av) const {
+  Harl::LogLevel level = Harl::getLogLevel(av);
+  switch(level) {
+    case ERROR:
+      error();
+    case WARNING:
+      warning();
+    case INFO:
+      info();
+    case DEBUG:
+      debug();
+      break;
+    default:
+      std::cout << "[ Probably complaining about insignificant problems ]"
+                << std::endl;
+      break;
+  }
 }

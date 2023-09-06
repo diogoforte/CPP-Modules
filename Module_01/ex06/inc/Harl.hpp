@@ -13,7 +13,7 @@ public:
   void warning() const;
   void error() const;
   static LogLevel getLogLevel(const std::string &level);
-  void complain(const LogLevel level) const;
+  void complain(const char *av) const;
 };
 
 #endif

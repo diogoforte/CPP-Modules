@@ -5,7 +5,7 @@ RESET = \033[1;30m
 WHITE = \033[1;97m
 YELLOW = \033[1;33m
 
-NAME = Sedisforlosers
+NAME = sed
 CC = c++
 CFLAGS = -Werror -Wextra -Wall -std=c++98
 
