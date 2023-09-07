@@ -1,17 +1,30 @@
 #include "../inc/Point.hpp"
 
-bool bsp(Point const a, Point const b, Point const c, Point const point) {
-  Fixed w1 = ((a.getY() - c.getY()) * (point.getX() - c.getX()) +
-              (c.getX() - a.getX()) * (point.getY() - c.getY())) /
-             ((a.getY() - c.getY()) * (b.getX() - c.getX()) +
-              (c.getX() - a.getX()) * (b.getY() - c.getY()));
+float area(const Point &a, const Point &b, const Point &c) {
+    const Fixed ax = a.getX();
+    const Fixed ay = a.getY();
+    const Fixed bx = b.getX();
+    const Fixed by = b.getY();
+    const Fixed cx = c.getX();
+    const Fixed cy = c.getY();
 
-  Fixed w2 = ((c.getY() - b.getY()) * (point.getX() - c.getX()) +
-              (b.getX() - c.getX()) * (point.getY() - c.getY())) /
-             ((a.getY() - c.getY()) * (b.getX() - c.getX()) +
-              (c.getX() - a.getX()) * (b.getY() - c.getY()));
+    Fixed area = (ax * (by - cy) + bx * (cy - ay) + cx * (ay - by)) / 2.0f;
+    if (area < 0) {
+        area = area * -1;
+    }
+    return area.toFloat();
+}
 
-  Fixed w3 = Fixed(1.0f) - w1 - w2;
+bool bsp(const Point &a, const Point &b, const Point &c, const Point &point) {
+    if (point.getX() == a.getX() || point.getX() == b.getX() || point.getX() == c.getX() ||
+        point.getY() == a.getY() || point.getY() == b.getY() || point.getY() == c.getY()) {
+        return false;
+    }
 
-  return (w1 > 0.0f && w2 > 0.0f && w3 > 0.0f);
+    float abc = area(a, b, c);
+    float pbc = area(point, b, c);
+    float pac = area(point, a, c);
+    float pab = area(point, a, b);
+
+    return roundf((abc - (pbc + pac + pab)) * 10000) == 0;
 }

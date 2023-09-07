@@ -7,9 +7,8 @@
 
 class Fixed {
 private:
-  int fixed_point_value;
+  int RawBits;
   static const int fractional_bits = 8;
-  static const int fractional_mask = (1 << fractional_bits) - 1;
 
 public:
   Fixed();
@@ -22,7 +21,7 @@ public:
   int toInt(void) const;
   int getRawBits(void) const;
   void setRawBits(int const raw);
-  friend std::ostream &operator<<(std::ostream &out, const Fixed &f);
 };
 
+std::ostream &operator<<(std::ostream &out, const Fixed &f);
 #endif
