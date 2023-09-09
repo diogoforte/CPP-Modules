@@ -1,4 +1,4 @@
-#include "../inc/Dog.hpp"
+#include "../inc/../inc/Dog.hpp"
 
 Dog::Dog() {
   type = "Dog";

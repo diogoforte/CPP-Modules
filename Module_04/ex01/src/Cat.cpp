@@ -1,4 +1,4 @@
-#include "../inc/Cat.hpp"
+#include "../inc/../inc/Cat.hpp"
 
 Cat::Cat() : brain(new Brain()) {
     type = "Cat";

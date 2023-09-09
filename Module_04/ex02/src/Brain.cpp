@@ -1,4 +1,4 @@
-#include "../inc/Brain.hpp"
+#include "../inc/../inc/Brain.hpp"
 
 Brain::Brain() {
   for (int i = 0; i < 100; i++) {

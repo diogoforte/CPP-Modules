@@ -1,8 +1,8 @@
-#include "../inc/Animal.hpp"
-#include "../inc/Cat.hpp"
-#include "../inc/Dog.hpp"
-#include "../inc/WrongAnimal.hpp"
-#include "../inc/WrongCat.hpp"
+#include "../inc/../inc/Animal.hpp"
+#include "../inc/../inc/Cat.hpp"
+#include "../inc/../inc/Dog.hpp"
+#include "../inc/../inc/WrongAnimal.hpp"
+#include "../inc/../inc/WrongCat.hpp"
 
 int main() {
   const Animal *animals[2];
@@ -19,3 +19,14 @@ int main() {
 
   return 0;
 }
+
+/*
+int main()
+{
+const Animal* j = new Dog();
+const Animal* i = new Cat();
+delete j;//should not create a leak
+delete i;
+...
+return 0;
+}*/

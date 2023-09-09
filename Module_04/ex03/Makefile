@@ -5,10 +5,10 @@ RESET = \033[1;30m
 WHITE = \033[1;97m
 YELLOW = \033[1;33m
 
-NAME = Nowitsweird
+NAME = Interface
 
 CC = c++
-CFLAGS = -Werror -Wextra -Wall -std=c++98 -Wshadow -Wno-shadow
+CFLAGS = -Werror -Wextra -Wall -std=c++98
 
 INC = -I ./inc/
 SRC_PATH = src/

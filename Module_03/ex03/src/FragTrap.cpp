@@ -5,14 +5,14 @@ FragTrap::FragTrap() : ClapTrap() {
     hp = 100;
     ep = 100;
     ad = 30;
-    std::cout << "Default FragTrap " << name << " has been assembled!" << std::endl;
+    std::cout << "Default FragTrap " << name << " has been created!" << std::endl;
 }
 
 FragTrap::FragTrap(std::string newName) : ClapTrap(newName) {
     hp = 100;
     ep = 100;
     ad = 30;
-    std::cout << "FragTrap " << name << " has been assembled!" << std::endl;
+    std::cout << "FragTrap " << name << " has been created!" << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap &source) : ClapTrap(source) {
@@ -20,7 +20,7 @@ FragTrap::FragTrap(const FragTrap &source) : ClapTrap(source) {
 }
 
 FragTrap::~FragTrap() {
-    std::cout << "FragTrap " << name << " has been disassembled!" << std::endl;
+    std::cout << "FragTrap " << name << " is destroyed!" << std::endl;
 }
 
 void FragTrap::highFivesGuys() {

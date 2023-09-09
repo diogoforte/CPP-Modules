@@ -1,4 +1,4 @@
-#include "../inc/WrongCat.hpp"
+#include "../inc/../inc/WrongCat.hpp"
 
 WrongCat::WrongCat() {
   type = "WrongCat";

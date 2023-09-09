@@ -1,8 +1,8 @@
-#include "../inc/Animal.hpp"
-#include "../inc/Cat.hpp"
-#include "../inc/Dog.hpp"
-#include "../inc/WrongAnimal.hpp"
-#include "../inc/WrongCat.hpp"
+#include "../inc/../inc/Animal.hpp"
+#include "../inc/../inc/Cat.hpp"
+#include "../inc/../inc/Dog.hpp"
+#include "../inc/../inc/WrongAnimal.hpp"
+#include "../inc/../inc/WrongCat.hpp"
 
 int main() {
   const Animal *meta = new Animal();
