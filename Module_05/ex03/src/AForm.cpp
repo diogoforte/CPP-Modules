@@ -59,8 +59,6 @@ AForm &AForm::operator=(const AForm &source) {
   return *this;
 }
 
-AForm::~AForm() {}
-
 void AForm::execute(Bureaucrat const &executor) const {
   if (!getIsSigned()) {
     throw std::runtime_error("Form is not signed");
