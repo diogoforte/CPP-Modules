@@ -27,6 +27,6 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const {
   if (rand() % 2) {
     std::cout << executor.getName() << " has been robotomized successfully.\n";
   } else {
-    std::cout << "Robotomy on " << getTarget() << " failed.\n";
+    std::cout << "Robotomy on " << executor.getName() << " failed.\n";
   }
 }

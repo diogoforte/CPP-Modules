@@ -26,11 +26,11 @@ void Form::beSigned(const Bureaucrat &bureaucrat) {
 }
 
 const char *Form::GradeTooHighException::what() const throw() {
-  return ("Grade is too High (Integer value is too low)");
+  return ("Grade is too High");
 }
 
 const char *Form::GradeTooLowException::what() const throw() {
-  return ("Grade is too Low (Integer value is too high)");
+  return ("Grade is too Low");
 }
 
 std::ostream &operator<<(std::ostream &os, const Form &form) {
@@ -42,3 +42,21 @@ std::ostream &operator<<(std::ostream &os, const Form &form) {
      << ". Grade to execute: " << form.getGradeToExecute() << ".";
   return os;
 }
+
+Form::Form() : name("default"), isSigned(false), gradeToSign(150),
+               gradeToExecute(150) {}
+
+Form::Form(const Form &source)
+    : name(source.getName()), isSigned(source.getIsSigned()),
+      gradeToSign(source.getGradeToSign()),
+      gradeToExecute(source.getGradeToExecute()) {}
+
+Form &Form::operator=(const Form &source) {
+  if (this == &source) {
+    return *this;
+  }
+  this->isSigned = source.getIsSigned();
+  return *this;
+}
+
+Form::~Form() {}

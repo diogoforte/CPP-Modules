@@ -51,11 +51,11 @@ void Bureaucrat::decrementGrade() {
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw() {
-  return ("Grade is too High (Integer value is too low)");
+  return ("Grade is too High");
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw() {
-  return ("Grade is too Low (Integer value is too high)");
+  return ("Grade is too Low");
 }
 
 std::ostream &operator<<(std::ostream &os, Bureaucrat &bureaucrat) {

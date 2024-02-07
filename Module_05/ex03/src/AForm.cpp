@@ -26,22 +26,40 @@ void AForm::beSigned(const Bureaucrat &bureaucrat) {
 }
 
 const char *AForm::GradeTooHighException::what() const throw() {
-  return ("Grade is too High (Integer value is too low)");
+  return ("Grade is too High");
 }
 
 const char *AForm::GradeTooLowException::what() const throw() {
-  return ("Grade is too Low (Integer value is too high)");
+  return ("Grade is too Low");
 }
 
-std::ostream &operator<<(std::ostream &os, const AForm &form) {
-  os << "Form " << form.getName() << " is ";
-  if (!form.getIsSigned()) {
+std::ostream &operator<<(std::ostream &os, const AForm &Aform) {
+  os << "Form " << Aform.getName() << " is ";
+  if (!Aform.getIsSigned()) {
     os << "not ";
   }
-  os << "signed. Grade to sign: " << form.getGradeToSign()
-     << ". Grade to execute: " << form.getGradeToExecute() << ".";
+  os << "signed. Grade to sign: " << Aform.getGradeToSign()
+     << ". Grade to execute: " << Aform.getGradeToExecute() << ".";
   return os;
 }
+
+AForm::AForm() : name("default"), isSigned(false), gradeToSign(150),
+               gradeToExecute(150) {}
+
+AForm::AForm(const AForm &source)
+    : name(source.getName()), isSigned(source.getIsSigned()),
+      gradeToSign(source.getGradeToSign()),
+      gradeToExecute(source.getGradeToExecute()) {}
+
+AForm &AForm::operator=(const AForm &source) {
+  if (this == &source) {
+    return *this;
+  }
+  this->isSigned = source.getIsSigned();
+  return *this;
+}
+
+AForm::~AForm() {}
 
 void AForm::execute(Bureaucrat const &executor) const {
   if (!getIsSigned()) {
