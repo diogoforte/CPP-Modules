@@ -38,17 +38,17 @@ Bureaucrat::~Bureaucrat() {
 }
 
 void Bureaucrat::incrementGrade() {
-  if (grade + 1 > 150)
+  if (grade - 1 < 1)
     throw GradeTooHighException();
   else
-    grade++;
+    grade--;
 }
 
 void Bureaucrat::decrementGrade() {
-  if (grade - 1 < 0)
+  if (grade + 1 > 150)
     throw GradeTooLowException();
   else
-    grade--;
+    grade++;
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw() {

@@ -26,5 +26,4 @@ int main() {
   } catch (std::exception &exception) {
     std::cerr << "Caught exception: " << exception.what() << std::endl;
   }
-  return 0;
 }
