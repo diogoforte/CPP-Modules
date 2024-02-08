@@ -1,17 +1,19 @@
 #include "Bureaucrat.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
 #include "Intern.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include <cstdlib>
 #include <ctime>
 
 int main() {
+  try {
+    srand(time(NULL));
     Bureaucrat a("Emperor", 1);
     Intern z;
 
-    AForm* b = z.makeForm("RobotomyRequestForm", "Bender");
-    AForm* c = z.makeForm("ShrubberyCreationForm", "Christmas");
+    AForm *b = z.makeForm("RobotomyRequestForm", "Bender");
+    AForm *c = z.makeForm("ShrubberyCreationForm", "Christmas");
 
     std::cout << a << std::endl << *b << std::endl << *c << std::endl;
 
@@ -21,12 +23,19 @@ int main() {
     std::cout << *b << std::endl << *c << std::endl;
 
     for (int i = 0; i < 10; i++)
-        b->execute(a);
+      b->execute(a);
 
     a.executeForm(*c);
 
     delete b;
     delete c;
-
-    return 0;
+  } catch (Bureaucrat::GradeTooHighException &exception) {
+    std::cerr << "Caught GradeTooHighException: " << exception.what()
+              << std::endl;
+  } catch (Bureaucrat::GradeTooLowException &exception) {
+    std::cerr << "Caught GradeTooLowException: " << exception.what()
+              << std::endl;
+  } catch (std::exception &exception) {
+    std::cerr << "Caught exception: " << exception.what() << std::endl;
+  }
 }

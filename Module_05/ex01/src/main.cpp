@@ -18,12 +18,6 @@ int main() {
   } catch (Bureaucrat::GradeTooLowException &exception) {
     std::cerr << "Caught Bureaucrat::GradeTooLowException: " << exception.what()
               << std::endl;
-  } catch (Form::GradeTooHighException &exception) {
-    std::cerr << "Caught Form::GradeTooHighException: " << exception.what()
-              << std::endl;
-  } catch (Form::GradeTooLowException &exception) {
-    std::cerr << "Caught Form::GradeTooLowException: " << exception.what()
-              << std::endl;
   } catch (std::exception &exception) {
     std::cerr << "Caught exception: " << exception.what() << std::endl;
   }
@@ -40,12 +34,6 @@ int main() {
               << exception.what() << std::endl;
   } catch (Bureaucrat::GradeTooLowException &exception) {
     std::cerr << "Caught Bureaucrat::GradeTooLowException: " << exception.what()
-              << std::endl;
-  } catch (Form::GradeTooHighException &exception) {
-    std::cerr << "Caught Form::GradeTooHighException: " << exception.what()
-              << std::endl;
-  } catch (Form::GradeTooLowException &exception) {
-    std::cerr << "Caught Form::GradeTooLowException: " << exception.what()
               << std::endl;
   } catch (std::exception &exception) {
     std::cerr << "Caught exception: " << exception.what() << std::endl;
