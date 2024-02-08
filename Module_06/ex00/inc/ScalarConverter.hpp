@@ -8,10 +8,11 @@
 #include <iomanip>
 
 class ScalarConverter {
-private:
-  ScalarConverter();
-
 public:
+  ScalarConverter();
+  ScalarConverter(const ScalarConverter &other);
+  ScalarConverter &operator=(const ScalarConverter &other);
+  ~ScalarConverter();
   static void printChar(const std::string &literal);
   static void printInt(const std::string &literal);
   static void printFloat(const std::string &literal);

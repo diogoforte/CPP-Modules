@@ -1,5 +1,17 @@
 #include "ScalarConverter.hpp"
 
+ScalarConverter::ScalarConverter() {}
+
+ScalarConverter::~ScalarConverter() {}
+
+ScalarConverter::ScalarConverter(const ScalarConverter &other) {
+  *this = other;
+}
+
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other) {
+  return *this = other;
+}
+
 void ScalarConverter::printChar(const std::string &literal) {
   int c;
   std::stringstream ss(literal);
@@ -32,7 +44,7 @@ void ScalarConverter::printFloat(const std::string &literal) {
   std::cout << "float: ";
   if (literal == "nan")
     std::cout << "nanf" << std::endl;
-  else if (ss >> std::noskipws >> f)
+  else if (ss >> f)
     std::cout << std::fixed << std::setprecision(1) << f << "f" << std::endl;
   else
     std::cout << "Impossible" << std::endl;
@@ -45,7 +57,7 @@ void ScalarConverter::printDouble(const std::string &literal) {
   std::cout << "double: ";
   if (literal == "nan")
     std::cout << "nan" << std::endl;
-  else if (ss >> std::noskipws >> d)
+  else if (ss >> d)
     std::cout << std::fixed << std::setprecision(1) << d << std::endl;
   else
     std::cout << "Impossible" << std::endl;

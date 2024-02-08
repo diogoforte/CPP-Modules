@@ -2,6 +2,7 @@
 #define SERIALIZATION_HPP
 
 #include <iostream>
+#include <stdint.h>
 
 struct Data {
   int a;
@@ -9,12 +10,13 @@ struct Data {
 };
 
 class Serializer {
-private:
-  Serializer() {}
-
 public:
-  static std::size_t serialize(Data *ptr);
-  static Data *deserialize(std::size_t raw);
+  Serializer();
+  ~Serializer();
+  Serializer(const Serializer &other);
+  Serializer &operator=(const Serializer &other);
+  static uintptr_t serialize(Data *ptr);
+  static Data *deserialize(uintptr_t raw);
 };
 
 #endif
