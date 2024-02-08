@@ -12,6 +12,10 @@ private:
   ScalarConverter();
 
 public:
+  static void printChar(const std::string &literal);
+  static void printInt(const std::string &literal);
+  static void printFloat(const std::string &literal);
+  static void printDouble(const std::string &literal);
   static void convert(const std::string &literal);
 };
 
