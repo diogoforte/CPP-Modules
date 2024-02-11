@@ -6,8 +6,8 @@ Serializer::~Serializer() {}
 
 Serializer::Serializer(const Serializer &other) { *this = other; }
 
-Serializer &Serializer::operator=(const Serializer &other) {
-  return *this = other;
+Serializer &Serializer::operator=(const Serializer &) {
+  return *this;
 }
 
 uintptr_t Serializer::serialize(Data *ptr) {
