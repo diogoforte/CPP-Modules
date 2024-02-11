@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <stdexcept>
 #include <vector>
+#include <iostream>
 
 class Span {
 private:
@@ -11,14 +12,12 @@ private:
   std::vector<int> numbers;
 
 public:
-  Span(unsigned int N) : N(N) {}
 
-  void addNumber(int number) {
-    if (numbers.size() >= N) {
-      throw std::runtime_error("Span is full");
-    }
-    numbers.push_back(number);
-  }
+  Span();
+  ~Span();
+  Span (const Span &other);
+  Span &operator=(const Span &other);
+  Span(unsigned int N);
 
   template <typename InputIterator>
   void addNumber(InputIterator first, InputIterator last) {
@@ -26,26 +25,11 @@ public:
       throw std::runtime_error("Adding these exceeds the span");
     numbers.insert(numbers.end(), first, last);
   }
+  void addNumber(int number);
+  int shortestSpan();
+  int longestSpan();
 
-  int shortestSpan() {
-    if (numbers.size() < 2) {
-      throw std::runtime_error("Not enough numbers in span");
-    }
-    std::sort(numbers.begin(), numbers.end());
-    int shortest = numbers[1] - numbers[0];
-    for (unsigned int i = 2; i < numbers.size(); ++i) {
-      shortest = std::min(shortest, numbers[i] - numbers[i - 1]);
-    }
-    return shortest;
-  }
-
-  int longestSpan() {
-    if (numbers.size() < 2) {
-      throw std::runtime_error("Not enough numbers in span");
-    }
-    return *std::max_element(numbers.begin(), numbers.end()) -
-           *std::min_element(numbers.begin(), numbers.end());
-  }
+  void printNumbers();
 };
 
 #endif

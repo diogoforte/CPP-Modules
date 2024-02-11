@@ -3,22 +3,26 @@
 
 int main() {
   std::vector<int> numbers;
-  numbers.push_back(-10000);
-  numbers.push_back(0);
-  numbers.push_back(10000);
-
-  Span sp(5);
-  sp.addNumber(numbers.begin(), numbers.end());
-
+  for (int i = 0; i < 10000; ++i)
+    numbers.push_back(i);
+  Span span(10000);
   try {
-    std::cout << "shortest span: " << sp.shortestSpan() << std::endl;
+    span.addNumber(numbers.begin(), numbers.end());
+  }
+  catch(const std::exception& e)
+  {
+    std::cerr << e.what() << '\n';
+  }
+  try {
+    std::cout << "shortest span: " << span.shortestSpan() << std::endl;
   } catch (const std::runtime_error &e) {
     std::cout << e.what() << std::endl;
   }
 
   try {
-    std::cout << "longest span: " << sp.longestSpan() << std::endl;
+    std::cout << "longest span: " << span.longestSpan() << std::endl;
   } catch (const std::runtime_error &e) {
     std::cout << e.what() << std::endl;
   }
+  // span.printNumbers();
 }
