@@ -56,10 +56,3 @@ void RPN::makeOperation() {
     std::cerr << e.what() << std::endl;
   }
 }
-
-void RPN::printData() const {
-  std::vector<std::string>::const_iterator it = data.begin();
-  for (; it != data.end(); it++) {
-    std::cout << *it << std::endl;
-  }
-}
