@@ -30,13 +30,22 @@ template <typename T> void PmergeMe::printContainer(const T &container) {
 double PmergeMe::measureAndSort(std::list<int> &container) {
   clock_t start = clock();
   container.sort();
-  double time = double(clock() - start) / CLOCKS_PER_SEC;
-  return time;
+  return (clock() - start) / CLOCKS_PER_SEC;
 }
 
 double PmergeMe::measureAndSort(std::deque<int> &container) {
   clock_t start = clock();
   std::sort(container.begin(), container.end());
-  double time = double(clock() - start) / CLOCKS_PER_SEC;
-  return time;
+  return (clock() - start) / CLOCKS_PER_SEC;;
+}
+
+PmergeMe::PmergeMe() {}
+PmergeMe::~PmergeMe() {}
+PmergeMe::PmergeMe(const PmergeMe &other) { *this = other; }
+PmergeMe &PmergeMe::operator=(const PmergeMe &other) {
+  if (this != &other) {
+    list = other.list;
+    deque = other.deque;
+  }
+  return *this;
 }
