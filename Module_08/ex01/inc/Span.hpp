@@ -22,8 +22,9 @@ public:
 
   template <typename InputIterator>
   void addNumber(InputIterator first, InputIterator last) {
-    while (first != last)
-      addNumber(*first++);
+    if (std::distance(first, last) + numbers.size() > N)
+      throw std::runtime_error("Adding these exceeds the span");
+    numbers.insert(numbers.end(), first, last);
   }
 
   int shortestSpan() {
