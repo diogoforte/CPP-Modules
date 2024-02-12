@@ -1,8 +1,19 @@
 #include "PmergeMe.hpp"
 
+PmergeMe::PmergeMe() {}
+PmergeMe::~PmergeMe() {}
+PmergeMe::PmergeMe(const PmergeMe &other) { *this = other; }
+PmergeMe &PmergeMe::operator=(const PmergeMe &other) {
+  if (this != &other) {
+    list = other.list;
+    deque = other.deque;
+  }
+  return *this;
+}
+
 PmergeMe::PmergeMe(char **av) {
   for (int i = 1; av[i]; i++) {
-    int n = atoi(av[i]);
+    int n = std::strtol(av[i], 0, 10);
     list.push_back(n);
     deque.push_back(n);
   }
@@ -14,10 +25,13 @@ PmergeMe::PmergeMe(char **av) {
   std::cout << "After:  ";
   printContainer(list);
   std::setprecision(5);
-std::cout << std::fixed << std::setprecision(5) << "Time to process a range of " << list.size()
-          << " elements with std::list: " << listTime << " us\n";
-std::cout << std::fixed << std::setprecision(5) << "Time to process a range of " << deque.size()
-          << " elements with std::deque"<< ": " << dequeTime << " us\n";
+  std::cout << std::fixed << std::setprecision(5)
+            << "Time to process a range of " << list.size()
+            << " elements with std::list: " << listTime << " us\n";
+  std::cout << std::fixed << std::setprecision(5)
+            << "Time to process a range of " << deque.size()
+            << " elements with std::deque"
+            << ": " << dequeTime << " us\n";
 }
 
 template <typename T> void PmergeMe::printContainer(const T &container) {
@@ -28,24 +42,38 @@ template <typename T> void PmergeMe::printContainer(const T &container) {
 }
 
 double PmergeMe::measureAndSort(std::list<int> &container) {
+  std::deque<int> deque(container.begin(), container.end());
   clock_t start = clock();
-  container.sort();
-  return (clock() - start) / CLOCKS_PER_SEC;
+  fordJohnsonSort(deque.begin(), deque.end());
+  double time = (clock() - start) / CLOCKS_PER_SEC;
+  container.assign(deque.begin(), deque.end());
+  return time;
 }
 
 double PmergeMe::measureAndSort(std::deque<int> &container) {
   clock_t start = clock();
-  std::sort(container.begin(), container.end());
-  return (clock() - start) / CLOCKS_PER_SEC;;
+  fordJohnsonSort(container.begin(), container.end());
+  return (clock() - start) / CLOCKS_PER_SEC;
 }
 
-PmergeMe::PmergeMe() {}
-PmergeMe::~PmergeMe() {}
-PmergeMe::PmergeMe(const PmergeMe &other) { *this = other; }
-PmergeMe &PmergeMe::operator=(const PmergeMe &other) {
-  if (this != &other) {
-    list = other.list;
-    deque = other.deque;
+void PmergeMe::fordJohnsonSort(std::deque<int>::iterator first,
+                               std::deque<int>::iterator last) {
+  std::deque<int> arr(first, last);
+  int n = arr.size();
+  int i = 0, j = n - 1;
+  for (int k = 0; k < n; k += 2)
+    *(first + k) = arr[i++];
+  for (int k = 1; k < n; k += 2)
+    *(first + k) = arr[j--];
+  for (int k = 2; k < n; k *= 2) {
+    for (int i = 0; i < n; i += 2 * k) {
+      std::deque<int>::iterator mid = first + i + k;
+      std::deque<int>::iterator end = first + std::min(i + 2 * k, n);
+      if (mid > last)
+        mid = last;
+      if (end > last)
+        end = last;
+      std::inplace_merge(first + i, mid, end);
+    }
   }
-  return *this;
 }

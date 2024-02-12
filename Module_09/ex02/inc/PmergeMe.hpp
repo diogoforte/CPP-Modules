@@ -4,10 +4,11 @@
 #include <algorithm>
 #include <ctime>
 #include <deque>
+#include <iomanip>
 #include <iostream>
+#include <iterator>
 #include <list>
 #include <sstream>
-#include <iomanip>
 
 class PmergeMe {
 private:
@@ -16,10 +17,11 @@ private:
 
 public:
   PmergeMe(char **av);
-  template <typename T>
-  void printContainer(const T &container);
+  template <typename T> void printContainer(const T &container);
   double measureAndSort(std::list<int> &container);
   double measureAndSort(std::deque<int> &container);
+  void fordJohnsonSort(std::deque<int>::iterator first,
+                       std::deque<int>::iterator last);
 
   PmergeMe();
   ~PmergeMe();
