@@ -7,21 +7,20 @@
 #include <iomanip>
 #include <iostream>
 #include <iterator>
-#include <list>
 #include <sstream>
+#include <vector>
+#include <queue>
 
 class PmergeMe {
 private:
-  std::list<int> list;
+  std::vector<int> vector;
   std::deque<int> deque;
 
 public:
   PmergeMe(char **av);
   template <typename T> void printContainer(const T &container);
-  double measureAndSort(std::list<int> &container);
-  double measureAndSort(std::deque<int> &container);
-  void fordJohnsonSort(std::deque<int>::iterator first,
-                       std::deque<int>::iterator last);
+  template <typename T> double measureAndSort(T &container);
+  template <typename T> void fordJohnsonSort(T &container);
 
   PmergeMe();
   ~PmergeMe();

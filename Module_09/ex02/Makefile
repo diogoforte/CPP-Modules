@@ -41,7 +41,8 @@ fclean: clean
 re: fclean all
 
 run: re
-	@./$(NAME) 3 5 9 7 4
+	@./$(NAME) 9 8 7 6 5 4 3 2 1
+	#@./$(NAME) `shuf -i 1-1000 -n 3000 | tr "\n" " " `
 	@make fclean>/dev/null
 
 dir:

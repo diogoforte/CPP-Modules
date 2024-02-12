@@ -29,7 +29,7 @@ RPN::RPN(const char *av) {
         }
       }
     } else
-      throw std::runtime_error("Invalid token");
+      throw std::runtime_error("Error: invalid token");
   }
   if (stack.size() == 0)
     throw std::runtime_error("Error: no operands");
