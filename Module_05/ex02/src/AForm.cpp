@@ -43,8 +43,8 @@ std::ostream &operator<<(std::ostream &os, const AForm &Aform) {
   return os;
 }
 
-AForm::AForm() : name("default"), isSigned(false), gradeToSign(150),
-               gradeToExecute(150) {}
+AForm::AForm()
+    : name("default"), isSigned(false), gradeToSign(150), gradeToExecute(150) {}
 
 AForm::AForm(const AForm &source)
     : name(source.getName()), isSigned(source.getIsSigned()),

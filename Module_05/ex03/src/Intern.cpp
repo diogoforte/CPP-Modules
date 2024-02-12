@@ -32,7 +32,7 @@ AForm *makeShrubbery(const std::string target) {
 AForm *Intern::makeForm(const std::string form_to_create,
                         const std::string target_for_form) {
   AForm *(*all_forms[])(const std::string target) = {&makePresident, &makeRobot,
-                                                    &makeShrubbery};
+                                                     &makeShrubbery};
   std::string forms[] = {"PresidentialPardonForm", "RobotomyRequestForm",
                          "ShrubberyCreationForm"};
 

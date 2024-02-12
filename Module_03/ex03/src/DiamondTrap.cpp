@@ -15,7 +15,7 @@ DiamondTrap::DiamondTrap(std::string newName)
   std::cout << "DiamondTrap " << name << " has been forged!" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &source) 
+DiamondTrap::DiamondTrap(const DiamondTrap &source)
     : ClapTrap(source), ScavTrap(source), FragTrap(source) {
   name = source.name;
   std::cout << "DiamondTrap " << name << " is a diamond duplicate!"

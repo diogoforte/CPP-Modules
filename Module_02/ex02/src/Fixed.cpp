@@ -34,13 +34,9 @@ int Fixed::getRawBits(void) const { return RawBits; }
 
 void Fixed::setRawBits(int const raw) { RawBits = raw; }
 
-bool Fixed::operator>(const Fixed &rhs) const {
-  return RawBits > rhs.RawBits;
-}
+bool Fixed::operator>(const Fixed &rhs) const { return RawBits > rhs.RawBits; }
 
-bool Fixed::operator<(const Fixed &rhs) const {
-  return RawBits < rhs.RawBits;
-}
+bool Fixed::operator<(const Fixed &rhs) const { return RawBits < rhs.RawBits; }
 
 bool Fixed::operator>=(const Fixed &rhs) const {
   return RawBits >= rhs.RawBits;

@@ -3,7 +3,7 @@
 #include <string>
 
 std::string replace(const std::string &source, const std::string &from,
-                        const std::string &to) {
+                    const std::string &to) {
   std::string newString;
   newString.reserve(source.length());
   size_t lastPos = 0;

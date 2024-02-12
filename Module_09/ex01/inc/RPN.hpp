@@ -2,20 +2,17 @@
 #define RPN_HPP
 
 #include <cstdlib>
-#include <fstream>
 #include <iostream>
 #include <sstream>
 #include <stack>
-#include <vector>
 
 class RPN {
 private:
-  std::vector<std::string> data;
+  std::stack<int> stack;
 
 public:
   RPN(const char *av);
   ~RPN();
-  void makeOperation();
 };
 
 #endif

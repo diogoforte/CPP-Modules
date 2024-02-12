@@ -2,9 +2,9 @@
 #define SPAN_HPP
 
 #include <algorithm>
+#include <iostream>
 #include <stdexcept>
 #include <vector>
-#include <iostream>
 
 class Span {
 private:
@@ -12,10 +12,9 @@ private:
   std::vector<int> numbers;
 
 public:
-
   Span();
   ~Span();
-  Span (const Span &other);
+  Span(const Span &other);
   Span &operator=(const Span &other);
   Span(unsigned int N);
 

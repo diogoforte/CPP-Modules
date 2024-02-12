@@ -10,7 +10,7 @@ int main() {
   trap.attack("Target");
   trap.takeDamage(50);
   trap.beRepaired(5);
-   std::cout << std::endl << "Scav" << std::endl;
+  std::cout << std::endl << "Scav" << std::endl;
   ScavTrap scav("Scav");
   scav.attack("Target");
   scav.guardGate();
